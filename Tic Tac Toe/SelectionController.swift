@@ -12,17 +12,17 @@ class SelectionController: UIViewController {
     
     //Instance variable created.
     var selectedX = true
-
+    
     //Didn't do much with the UILabel yet.
     @IBOutlet weak var selectionLabel: UILabel!
-
+    
     //Simple boolean to determine whether X or O is selected.
     @IBAction func xButton(_ sender: UIButton) {
         
         selectedX = true
-    
+        
     }
-
+    
     @IBAction func oButton(_ sender: UIButton) {
         
         selectedX = false
@@ -41,10 +41,14 @@ class SelectionController: UIViewController {
             if selectedX {
                 
                 next.currentPlayer = 1
+                next.selectedPlayer = 1
                 
             } else {
                 
                 next.currentPlayer = 2
+                next.selectedPlayer = 2
+                
+                
                 
             }
             

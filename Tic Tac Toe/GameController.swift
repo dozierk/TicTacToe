@@ -11,16 +11,26 @@ import GameplayKit
 
 class GameController: UIViewController {
     
+    //Created variable to save player order once game is initiated.
+    var selectedPlayer : Int!
     var currentPlayer = 1
     var gameState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
     
     
     
-    let winningCombinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 6, 8], [0, 4, 8], [2, 4, 6]]
+    let winningCombinations = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
     var activeGame = true
     
-    
-        //Player object created to show order in which turns are taken.
+    /// Disables all the fields after Tic Tac Toe
+    func gameOver() {
+        for i in 1...9
+        {
+            view.viewWithTag(i)?.isUserInteractionEnabled = false
+        }
+        
+        
+    }
+    //Player object created to show order in which turns are taken.
     @IBAction func gameOption(_ sender: UIButton) {
         if (gameState[sender.tag - 1] == 0) {
             
@@ -41,7 +51,7 @@ class GameController: UIViewController {
         
         
         
-        //For loop created for possible game combinations. Simple conditional statements to handle state of game and hide reset game options while game is active 
+        //For loop created for possible game combinations. Simple conditional statements to handle state of game and hide reset game options while game is active
         for possibility in winningCombinations {
             
             if gameState[possibility[0]] != 0 && gameState[possibility[0]] == gameState[possibility[1]] && gameState[possibility[1]] == gameState[possibility[2]] {
@@ -55,8 +65,10 @@ class GameController: UIViewController {
                     print("")
                     
                 }
-                
+
                 resetGame.isHidden = false
+                gameOver()
+                
                 
             }
             
@@ -73,18 +85,20 @@ class GameController: UIViewController {
             if activeGame == false {
                 
                 resetGame.isHidden = false
+                gameOver()
                 
             }
-        
+            
         }
         
     }
     
     //Feedback that game is over, whether it's a draw or there is a winner. AI hasn't been set to win yet.
+    //There is a bug. The reset game button should only appear when a player has won or the game is a draw. Initially the reset game button does appear when the game is started, but disappears once the first move is made. This only happens while playing the game for the first time.
     @IBAction func resetGame(_ sender: UIButton) {
         gameState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
         activeGame = true
-        currentPlayer = 1
+        currentPlayer = selectedPlayer
         
         resetGame.isHidden = true
         
@@ -93,7 +107,11 @@ class GameController: UIViewController {
         {
             let button = view.viewWithTag(i) as! UIButton
             button.setImage(nil, for: UIControlState())
+            button.isUserInteractionEnabled = true
         }
+        
+        
+        
     }
     
     @IBOutlet weak var resetGame: UIButton!
