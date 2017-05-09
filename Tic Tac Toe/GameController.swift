@@ -20,7 +20,7 @@ class GameController: UIViewController {
     var activeGame = true
     
     
-        //Player object created to show order in which turns are taken
+        //Player object created to show order in which turns are taken.
     @IBAction func gameOption(_ sender: UIButton) {
         if (gameState[sender.tag - 1] == 0) {
             
@@ -41,7 +41,7 @@ class GameController: UIViewController {
         
         
         
-        //For loop created for possible game combinations.
+        //For loop created for possible game combinations. Simple conditional statements to handle state of game and hide reset game options while game is active 
         for possibility in winningCombinations {
             
             if gameState[possibility[0]] != 0 && gameState[possibility[0]] == gameState[possibility[1]] && gameState[possibility[1]] == gameState[possibility[2]] {
@@ -80,7 +80,7 @@ class GameController: UIViewController {
         
     }
     
-    //Feedback that game is over. Whether it's a draw or AI wins.
+    //Feedback that game is over, whether it's a draw or there is a winner. AI hasn't been set to win yet.
     @IBAction func resetGame(_ sender: UIButton) {
         gameState = [0, 0, 0, 0, 0, 0, 0, 0, 0]
         activeGame = true
