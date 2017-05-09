@@ -13,8 +13,10 @@ class SelectionController: UIViewController {
     //Instance variable created.
     var selectedX = true
 
+    //Didn't do much with the UILabel yet.
     @IBOutlet weak var selectionLabel: UILabel!
 
+    //Simple boolean to determine whether X or O is selected.
     @IBAction func xButton(_ sender: UIButton) {
         
         selectedX = true
@@ -26,6 +28,7 @@ class SelectionController: UIViewController {
         selectedX = false
     }
     
+    //Conditional statement that instantiates which players goes first and retains memory once game is initiated.
     @IBAction func startGame(_ sender: Any) {
         
     }
