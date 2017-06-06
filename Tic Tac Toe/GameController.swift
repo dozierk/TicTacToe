@@ -9,6 +9,8 @@
 import UIKit
 import GameplayKit
 
+
+// TODO: Use collectionView instead of manually implementing a collection of views.
 class GameController: UIViewController {
     
     //Created variable to save player order once game is initiated.

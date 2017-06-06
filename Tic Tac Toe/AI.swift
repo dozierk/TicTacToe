@@ -9,7 +9,9 @@
 import Foundation
 import GameplayKit
 
-class AI: NSObject, GKGameModelPlayer {
+class AI: NSObject, GKGameModel, GKGameModelPlayer, GKGameModelUpdate {
+    
+    //
     
     //This is the file where all AI implementation is handled. Initially a start with satisfying all required functions and protocols and each of the variables. Set up Didn't have much time to go further with this part, but there's plenty of potential code. Ran into a hangup when trying to have the AI class conform to NSObject, GKGameModel, GKGameModelPlayer, and GKGameModelUpdate. My thoughts were to then remove the protocols and created extensions. Instead creating classes to separate the model logic to house data required to function and actually implement movement logic in the Move class. In the future, will work on GKGameModel implement and having the AI class conform to that protocol. Should make the code a bit cleaner and concise.
     
@@ -21,9 +23,13 @@ class AI: NSObject, GKGameModelPlayer {
     
     var strategist = GKMinmaxStrategist()
     
+    var value: Int
+    
     
     
     func apply(_ gameModelUpdate: GKGameModelUpdate) {
+        
+        
         
     }
     
@@ -38,7 +44,7 @@ class AI: NSObject, GKGameModelPlayer {
     
     //    Property configuration for gameplay behavior.
     override init() {
-        super.init(playerId = 1)
+        super.init()
         
         playerId = 1
         strategist.maxLookAheadDepth = 3
@@ -53,17 +59,16 @@ class AI: NSObject, GKGameModelPlayer {
         
         var value: Int = 0
         
+        
+        
     }
     
-    
-    //    extension AI: GKGameModel {
-    //
-    //    }
-    
-    ////    extension AI: GKGameModelUpdate {
-    ////        
-    ////    }
-    
-    
 
+    
+    
 }
+
+
+
+
+
