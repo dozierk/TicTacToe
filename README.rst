@@ -1,4 +1,4 @@
- 
+This was created as the result of an interview. The info below shows my progress throughout the few hours I spent on the project and how I would fix it at a later time.
 
 Tic Tac Toe game created in Swift. Tested on the simulator, iPod, and iPad. No constraints on the Game Controller, but all UI should be visible on any device. Reset game was a bit cut off on the iPod device. Game does give player an option to choose X or O. Didn't get to implement much on the AI side, but laid out some future steps I'd like to take once as I still intend to complete this challenge. 
 
